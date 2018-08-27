@@ -1,0 +1,99 @@
+find(matrix)  --> return non zero indices in a vector.  column number = ceil(index/n),   row number = rem(index, n) == 0? n: rem(index, n)  
+
+conditional operations
+=======================
+matix > 5  --> return n*m matrix with 0s and 1s
+
+max operations
+----------------
+max(matrix)   --> get maximum value of each column. 1*m matrix
+max(matrix,0,1)  === max(matrix)      -->> 2nd aurgumet is ignored.  3rd is the Dimention [1 for and 2 for column]
+max(matrix,0,2)  --> get maximum value of each row. n*1 matrix
+max(matrix, mx) --> return n*m  matrix with values (val>mx)? val: mx 
+
+operators
+-----------
+A .* B   --> multiply each element of A with crossponding element of B.
+A .^ 2   --> take power of 2 of each element.
+1 ./ A   --> get 1/x of all elements.
+A'  --> transpose of A.
+
+use of colon (:)
+--------------------
+5:0.1:9     (start):(increament):(upto)   -->>  (increament is optional)
+<vector>(2:5)   -> from  2nd row to 5th row in 1 * 4 matrix
+<vector/matrix>(2:5, 1)   -> from  2nd row to 5th row in 4 * 1 matrix (4 dimentional vector) 
+<matrix>(2:5, 3:5)  -->  return sub 4 * 3 matrix.
+<matrix>(2, :)  --> 2nd row  1 * m matrix
+<matrix>(:, 2)  --> 2nd column  n * 1 matrix
+<matrix>(:, :)  --> all rows and all columns  n * m matrix
+<matrix>([1 5], :)   -->  1st and 5th rows   2 * m matrix
+<matrix>(:)  --> append all columns into single column of lenght n*m
+
+
+add new rows and colums
+-------------------------
+var = [var,[1;2;3;4;5;6;7;8]]  --> append column
+var = [var;[1,2,3,4,5,6,7,8]]  --> append row
+matrixNM = [matrixNM, matrixN2] -> append 2 colums of N length
+matrixNM = [matrixNM, matrix2M] -> append 2 rows of M length
+
+update rows and columns
+--------------------------
+ matrixNM(2,:) = (zeros(1,size(matrixNM,2))+ 4)   -->> update 2nd row with value 4
+ matrixNM([3,6],:) = (zeros(1,size(matrixNM,2))+ 5)   -->> update 3rd and 6th rows with value 5
+ matrixNM(:,1) = (zeros(size(matrixNM,1),1)+ 6)  --> update 1st column with value 6
+ matrixNM(:,[2,4]) = (zeros(size(matrixNM,1),2)+ 7)  --> update 2nd and 4th columns with value 7
+
+
+general purpose methods
+-------------------------
+zeros(n,m)  -->>   n * m or n * n  matrix  
+ones(n,m)   -->>   n * m or n * n  matrix
+rand(n,m)   -->>   n * m or n * n  matrix
+eye(n,m)    -->>   n * m or n * n  matrix  Indentity matrix
+randn(n,m)  -->>   n * m or n * n  matrix  (mean = 0 and sd = 1)
+sqrt(6)  -->> square root.
+size(matrix)   -->>>  n and m values
+lenght(matrix) --->>  (n > m)? n: m
+
+list of active variables
+-----------------------
+who
+whos   -->> with size and type details.
+
+save variable to file
+---------------------
+save filename.mat variable;
+
+
+load variable to file
+---------------------
+load filename.mat;
+
+
+help or documentation of methods
+----------------------------------
+help eye   -->> help <method name>
+
+ploting graphs
+-------------------
+plot(x,y)
+hold  -->> to plot multiple functions
+close -->> to close the ploting.
+xlabel("text") ylabel("text") title("text")  --> for labeling
+legend("cos","sin") 
+print -dpng 'a.png'  --> save as .png
+subplot(rows,cols,plot_number)   --- (sub plotting) to select specific plot. rows*cols plots.
+axis([min_x, max_x, min_y, max_y])   --- for defining rage of plot_number
+
+color representation of matrix
+-----------------------------------
+imagesc(matrix)
+colormap gray  --> for gray color map
+colorbar   -->> show color bar
+
+defining functions.
+---------------------
+addpath('path/to/funtions/folder')   --- define path where to pick functions from. 
+	

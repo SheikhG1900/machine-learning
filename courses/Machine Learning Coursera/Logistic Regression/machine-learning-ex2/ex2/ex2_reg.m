@@ -120,13 +120,13 @@ options = optimset('GradObj', 'on', 'MaxIter', 400);
 % Plot Boundary
 plotDecisionBoundary(theta, X, y, degree);
 hold on;
-title(sprintf('lambda = %g', lambda))
+title(sprintf('lambda = %g', lambda));
 
 % Labels and Legend
-xlabel('Microchip Test 1')
-ylabel('Microchip Test 2')
+xlabel('Microchip Test 1');
+ylabel('Microchip Test 2');
 
-legend('y = 1', 'y = 0', 'Decision boundary')
+legend('y = 1', 'y = 0', 'Decision boundary');
 hold off;
 
 % Compute accuracy on our training set

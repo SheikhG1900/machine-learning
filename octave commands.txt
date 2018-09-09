@@ -1,3 +1,9 @@
+reshaping matrix
+=================
+reshape(vector, n, m)  --> convert vecotor in to n*m  matrix
+
+find ones in a matrix
+==========================
 find(matrix)  --> return non zero indices in a vector.  column number = ceil(index/n),   row number = rem(index, n) == 0? n: rem(index, n)  
 
 conditional operations

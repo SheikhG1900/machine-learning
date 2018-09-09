@@ -20,7 +20,10 @@ p = zeros(size(X, 1), 1);
 %       information see 'help max'. If your examples are in rows, then, you
 %       can use max(A, [], 2) to obtain the max for each row.
 %
-
+A0 = [ones(m,1), X]; % --- m*n0  -> n0 = layer 0 features + 1
+A1 = [ones(m,1), sigmoid(A0 * Theta1')];  %  ---- m * n1 -> n1 = layer 1 features + 1 
+A2 = sigmoid(A1 * Theta2'); % ---- m * n2   -> n1 = layer 2 features
+[vals, p] = max(A2, [], 2);
 
 
 

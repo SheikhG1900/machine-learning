@@ -37,7 +37,30 @@ grad = zeros(size(theta));
 %
 
 
+prediction = sigmoid(X * theta);
+j_i =  -y .* log(prediction) - (1 - y) .* log(1 - prediction); % -- cost for ith training set.
+J = 1/m * sum(j_i);
 
+% number of training examples = m
+% number of features = n  
+% X  --> m * n
+% y  --> m * 1
+% theta --> n * 1
+% prediction --> m * 1   
+grad_i = (prediction - y) .* X; %  --> m * n
+grad = (1/m) * sum(grad_i); % --> 1 * n
+grad = grad'; % --> n * 1
+
+%%%-------- Regularization ---------%%%%
+
+% J with regularization
+theta2 = theta .^ 2;
+J =  ((lambda /(2 * m)) * (sum(theta2) - theta2(1))) + J;
+
+% grad with regularization
+grad_regularization = ( lambda / m ) .* theta;
+grad_regularization(1) = 0;
+grad = grad + grad_regularization;
 
 
 

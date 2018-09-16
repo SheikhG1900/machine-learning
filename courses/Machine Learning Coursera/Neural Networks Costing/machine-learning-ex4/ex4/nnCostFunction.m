@@ -38,6 +38,16 @@ Theta2_grad = zeros(size(Theta2));
 %         variable J. After implementing Part 1, you can verify that your
 %         cost function computation is correct by verifying the cost
 %         computed in ex4.m
+[p,hL,h1] = predict(Theta1, Theta2, X);
+y_bool = (y == [1:num_labels]);
+j_i =  -y_bool .* log(hL) - (1 - y_bool) .* log(1 - hL); % -- cost for ith training set.
+J_hL = 1/m .* sum(j_i);
+J = sum(J_hL);
+
+%-- regularization --%
+params_sum = sum(nn_params .^ 2) - sum(Theta1(:, 1) .^ 2) - sum(Theta2(:, 1) .^ 2);
+reg = params_sum * lambda /(2 * m);
+J = J + reg;
 %
 % Part 2: Implement the backpropagation algorithm to compute the gradients
 %         Theta1_grad and Theta2_grad. You should return the partial derivatives of
@@ -53,6 +63,22 @@ Theta2_grad = zeros(size(Theta2));
 %         Hint: We recommend implementing backpropagation using a for-loop
 %               over the training examples if you are implementing it for the 
 %               first time.
+a1 = X;
+a2 = h1;
+a3 = hL;
+
+err3 = a3 - y_bool;
+
+a2_prime = a2 .* (1 - a2);
+err2 = (err3 * Theta2(:,[2:end])) .* a2_prime;
+
+delta2 = err3' * [ones(m,1), a2];
+Theta2_grad = delta2 ./ m; 
+
+
+delta1 = err2' * [ones(m,1), a1];
+Theta1_grad = delta1 ./ m; 
+
 %
 % Part 3: Implement regularization with the cost function and gradients.
 %
@@ -62,8 +88,14 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+Theta2_reg =  (lambda/m) .* Theta2;
+Theta2_reg(:,1) = 0; %ignore biesed feature. 
+Theta2_grad = Theta2_grad + Theta2_reg;  
 
 
+Theta1_reg =  (lambda/m) .* Theta1;
+Theta1_reg(:,1) = 0; %ignore biesed feature. 
+Theta1_grad = Theta1_grad + Theta1_reg;  
 
 
 

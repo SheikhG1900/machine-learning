@@ -20,12 +20,12 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-##diff = [];
-##for j = [1:K]
-##  diff = [diff, sum((X - centroids(j,:)) .^2, 2)];
-##endfor
-##
-##[val, idx] = min(diff,[],2);
+diff = [];
+for j = [1:K]
+  diff = [diff, sum((X - centroids(j,:)) .^2, 2)];
+endfor
+
+[val, idx] = min(diff,[],2);
 
 
 % =============================================================

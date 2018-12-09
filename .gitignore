@@ -1,6 +1,7 @@
 **/*.mp4
 **/*.srt
 **/*.zip
+**/*.gz
 **/*.png
 **/*.ipynb_checkpoints
 

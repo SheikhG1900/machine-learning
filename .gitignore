@@ -4,4 +4,5 @@
 **/*.gz
 **/*.png
 **/*.ipynb_checkpoints
-
+**/env
+**/data
